@@ -2,7 +2,8 @@ import app from "./server.js";
 import mongodb from "mongodb";
 import dotenv from "dotenv";
 import MoviesDAO from './dao/moviesDAO.js';
-import ReviewsDAO from './dao/reviewsDAO.js'   
+import ReviewsDAO from './dao/reviewsDAO.js'
+
 async function main() {
   dotenv.config();
   const client = new mongodb.MongoClient(process.env.MOVIEREVIEWS_DB_URI);
