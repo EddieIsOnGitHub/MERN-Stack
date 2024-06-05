@@ -25,6 +25,7 @@ export default class MoviesDAO {
       }
     }
 
+    
     let cursor;
     try {
       cursor = await movies
