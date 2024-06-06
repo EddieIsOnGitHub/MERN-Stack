@@ -11,6 +11,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import { BrowserRouter } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
+
 function App() {
   const [user, setUser] = React.useState(null)
   async function login(user = null) {// default user to null
