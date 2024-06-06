@@ -1,4 +1,10 @@
+import mongodb from "mongodb"
+const ObjectId = mongodb.ObjectID
+
 let movies;
+
+
+
 export default class MoviesDAO {
   static async injectDB(conn) {
     if (movies) {
@@ -8,6 +14,30 @@ export default class MoviesDAO {
       movies = await conn.db(process.env.MOVIEREVIEWS_NS).collection("movies");
     } catch (e) {
       console.error(`unable to connect in MoviesDAO: ${e}`);
+    }
+  } 
+  static async getMovieById(id) {
+    try {
+      return await movies.aggregate([
+        {
+          $match: {
+            _id: new ObjectId(id),
+          }
+        },
+        {
+          $lookup:
+          {
+            from: 'reviews',
+            localField: '_id',
+            foreignField: 'movie_id',
+            as: 'reviews',
+          }
+        }
+      ]).next()
+    }
+    catch (e) {
+      console.error(`something went wrong in getMovieById: ${e}`)
+      throw e
     }
   }
   static async getMovies({
@@ -25,7 +55,7 @@ export default class MoviesDAO {
       }
     }
 
-    
+
     let cursor;
     try {
       cursor = await movies
