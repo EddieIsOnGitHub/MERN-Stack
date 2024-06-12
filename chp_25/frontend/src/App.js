@@ -17,6 +17,7 @@ function App() {
   async function logout() {
     setUser(null);
   }
+  
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
