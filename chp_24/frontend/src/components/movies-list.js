@@ -55,6 +55,7 @@ const MoviesList = (props) => {
       });
   };
   
+  
   const retrieveRatings = () => {
     MovieDataService.getRatings(currentPage)
       .then((response) => {
