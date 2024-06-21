@@ -7,6 +7,7 @@ export default class ReviewsDAO {
     if (reviews) {
       return;
     }
+    
     try {
       reviews = await conn
         .db(process.env.MOVIEREVIEWS_NS)
