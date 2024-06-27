@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import booksRoute from './routes/booksRoute.js';
 import cors from 'cors';
 
-
 const app = express();
 
 // Middleware for parsing request body
